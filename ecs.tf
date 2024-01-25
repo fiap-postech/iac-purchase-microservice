@@ -172,7 +172,7 @@ resource "aws_iam_role_policy" "service_execution_policy" {
           "sns:Publish",
         ]
         Resource = [
-          data.aws_sns_topic.payment_done_topic.arn,
+          aws_sns_topic.purchase_created_topic.arn
         ]
       },
       {

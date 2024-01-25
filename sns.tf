@@ -1,4 +1,4 @@
-resource "aws_sns_topic" "cart_closed_topic" {
+resource "aws_sns_topic" "purchase_created_topic" {
   name                                  = local.sns.name
   firehose_success_feedback_sample_rate = 0
   http_success_feedback_sample_rate     = 0
