@@ -20,7 +20,7 @@ resource "aws_sns_topic_subscription" "get_payment_done_events" {
   ]
 }
 
-resource "aws_sqs_queue_policy" "orders_to_process_subscription" {
+resource "aws_sqs_queue_policy" "payment_done_to_process_subscription" {
   queue_url = aws_sqs_queue.payment_done_queue.id
   policy = jsonencode({
     Version = "2012-10-17",
