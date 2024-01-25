@@ -1,6 +1,6 @@
 locals {
   sns = {
-    name                           = "prd-purcharse-created-topic"
+    name                           = "prd-purchase-created-topic"
     min_delay_target               = 20
     max_delay_target               = 20
     num_retries                    = 3
