@@ -14,8 +14,9 @@ locals {
 
   subscription = {
     payment_done_topic = {
-      name     = "prd-payment-done-topic"
-      protocol = "sqs"
+      name                 = "prd-payment-done-topic"
+      protocol             = "sqs"
+      raw_message_delivery = true
     }
   }
 

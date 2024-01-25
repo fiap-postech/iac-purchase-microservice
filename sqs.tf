@@ -9,9 +9,10 @@ resource "aws_sqs_queue" "payment_done_queue" {
 }
 
 resource "aws_sns_topic_subscription" "get_payment_done_events" {
-  topic_arn = data.aws_sns_topic.payment_done_topic.arn
-  protocol  = local.subscription.payment_done_topic.protocol
-  endpoint  = aws_sqs_queue.payment_done_queue.arn
+  topic_arn            = data.aws_sns_topic.payment_done_topic.arn
+  protocol             = local.subscription.payment_done_topic.protocol
+  endpoint             = aws_sqs_queue.payment_done_queue.arn
+  raw_message_delivery = local.subscription.payment_done_topic.raw_message_delivery
 
   depends_on = [
     aws_sqs_queue.payment_done_queue,
