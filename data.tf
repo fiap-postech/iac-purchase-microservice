@@ -66,3 +66,11 @@ data "aws_apigatewayv2_vpc_link" "gateway_vpc_link" {
 data "aws_sns_topic" "payment_done_topic" {
   name = local.subscription.payment_done_topic.name
 }
+
+data "aws_sns_topic" "cart_closed_topic" {
+  name = local.subscription.cart_closed_topic.name
+}
+
+data "aws_sns_topic" "purchase_status_topic" {
+  name = local.sns.status.name
+}
