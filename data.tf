@@ -56,11 +56,11 @@ data "aws_security_group" "vpc_endpoint_sm_cl" {
 }
 
 data "aws_apigatewayv2_api" "tech_challenge_api" {
-  api_id = local.api_gateway.id
+  api_id = var.api_gateway_id
 }
 
 data "aws_apigatewayv2_vpc_link" "gateway_vpc_link" {
-  vpc_link_id = local.api_gateway.vpc_link.id
+  vpc_link_id = var.vpc_link_id
 }
 
 data "aws_sns_topic" "payment_done_topic" {
@@ -73,4 +73,16 @@ data "aws_sns_topic" "cart_closed_topic" {
 
 data "aws_sns_topic" "purchase_status_topic" {
   name = local.sns.status.name
+}
+
+data "aws_sns_topic" "payment_created_topic" {
+  name = local.sns.payment_created.name
+}
+
+data "aws_sns_topic" "remove_customer_data_topic" {
+  name = local.sns.remove_customer_data.name
+}
+
+data "aws_sqs_queue" "customer_data_removed" {
+  name = local.sqs.removed_customer_data.name
 }

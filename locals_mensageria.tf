@@ -18,6 +18,13 @@ locals {
     status = {
       name = "prd-notification-purchase-status-queue"
     }
+    payment_created = {
+      name = "prd-payment-created-topic"
+    }
+    remove_customer_data = {
+      name     = "prd-customer-remove-data-topic"
+      protocol = "sqs"
+    }
   }
 
   subscription = {
@@ -26,11 +33,22 @@ locals {
       protocol             = "sqs"
       raw_message_delivery = true
     }
+    payment_created_topic = {
+      name                 = "prd-payment-created-topic"
+      protocol             = "sqs"
+      raw_message_delivery = true
+    }
+    remove_customer_data_topic = {
+      name                 = "prd-customer-remove-data-topic"
+      protocol             = "sqs"
+      raw_message_delivery = true
+    }
     cart_closed_topic = {
       name                 = "prd-cart-closed-topic"
       protocol             = "sqs"
       raw_message_delivery = true
     }
+
   }
 
   sqs = {
@@ -45,6 +63,15 @@ locals {
     }
     payment_done = {
       name = "prd-purchase-payment-done-queue"
+    }
+    payment_created = {
+      name = "prd-purchase-payment-created-queue"
+    }
+    remove_customer_data = {
+      name = "prd-purchase-remove-customer-data-queue"
+    }
+    removed_customer_data = {
+      name = "prd-customer-remove-data-response-queue"
     }
   }
 }
