@@ -63,20 +63,12 @@ data "aws_apigatewayv2_vpc_link" "gateway_vpc_link" {
   vpc_link_id = var.vpc_link_id
 }
 
-data "aws_sns_topic" "payment_done_topic" {
-  name = local.subscription.payment_done_topic.name
-}
-
 data "aws_sns_topic" "cart_closed_topic" {
   name = local.subscription.cart_closed_topic.name
 }
 
 data "aws_sns_topic" "purchase_status_topic" {
   name = local.sns.status.name
-}
-
-data "aws_sns_topic" "payment_created_topic" {
-  name = local.sns.payment_created.name
 }
 
 data "aws_sns_topic" "remove_customer_data_topic" {

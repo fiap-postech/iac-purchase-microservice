@@ -16,7 +16,7 @@ locals {
       name = "prd-purchase-created-topic"
     }
     status = {
-      name = "prd-notification-purchase-status-queue"
+      name = "prd-purchase-status-notification-topic"
     }
     payment_created = {
       name = "prd-payment-created-topic"
@@ -25,16 +25,20 @@ locals {
       name     = "prd-customer-remove-data-topic"
       protocol = "sqs"
     }
+    payment_done = {
+      name                           = "prd-payment-done-topic"
+    },
+    payment_created = {
+      name                           = "prd-payment-created-topic"
+    }
   }
 
   subscription = {
     payment_done_topic = {
-      name                 = "prd-payment-done-topic"
       protocol             = "sqs"
       raw_message_delivery = true
     }
     payment_created_topic = {
-      name                 = "prd-payment-created-topic"
       protocol             = "sqs"
       raw_message_delivery = true
     }

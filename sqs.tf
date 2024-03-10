@@ -34,14 +34,14 @@ resource "aws_sqs_queue" "payment_done_queue_dlq" {
 }
 
 resource "aws_sns_topic_subscription" "get_payment_done_events" {
-  topic_arn            = data.aws_sns_topic.payment_done_topic.arn
+  topic_arn            = aws_sns_topic.payment_done_topic.arn
   protocol             = local.subscription.payment_done_topic.protocol
   endpoint             = aws_sqs_queue.payment_done_queue.arn
   raw_message_delivery = local.subscription.payment_done_topic.raw_message_delivery
 
   depends_on = [
     aws_sqs_queue.payment_done_queue,
-    data.aws_sns_topic.payment_done_topic
+    aws_sns_topic.payment_done_topic
   ]
 }
 
@@ -63,7 +63,7 @@ resource "aws_sqs_queue_policy" "payment_done_to_process_subscription" {
         ],
         Condition = {
           ArnEquals = {
-            "aws:SourceArn" : data.aws_sns_topic.payment_done_topic.arn
+            "aws:SourceArn" : aws_sns_topic.payment_done_topic.arn
           }
         }
       }
@@ -253,14 +253,14 @@ resource "aws_sqs_queue" "payment_created_dlq" {
 }
 
 resource "aws_sns_topic_subscription" "get_payment_created_events" {
-  topic_arn            = data.aws_sns_topic.payment_created_topic.arn
+  topic_arn            = aws_sns_topic.payment_created_topic.arn
   protocol             = local.subscription.payment_created_topic.protocol
   endpoint             = aws_sqs_queue.payment_created_queue.arn
   raw_message_delivery = local.subscription.payment_created_topic.raw_message_delivery
 
   depends_on = [
     aws_sqs_queue.payment_created_queue,
-    data.aws_sns_topic.payment_done_topic
+    aws_sns_topic.payment_done_topic
   ]
 }
 
@@ -282,7 +282,7 @@ resource "aws_sqs_queue_policy" "payment_created_to_process_subscription" {
         ],
         Condition = {
           ArnEquals = {
-            "aws:SourceArn" : data.aws_sns_topic.payment_created_topic.arn
+            "aws:SourceArn" : aws_sns_topic.payment_created_topic.arn
           }
         }
       }
