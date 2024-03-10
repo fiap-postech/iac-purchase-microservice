@@ -26,10 +26,10 @@ locals {
       protocol = "sqs"
     }
     payment_done = {
-      name                           = "prd-payment-done-topic"
+      name = "prd-payment-done-topic"
     },
     payment_created = {
-      name                           = "prd-payment-created-topic"
+      name = "prd-payment-created-topic"
     }
   }
 
